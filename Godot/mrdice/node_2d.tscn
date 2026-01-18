@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn5ua2tj75b2g"]
+
+[ext_resource type="Texture2D" uid="uid://ramnpnbpq8rk" path="res://icon.svg" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://biwmng0bcl6d2" path="res://character_body_2d.gd" id="2_0e48y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(126.5, 123)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epypp"]
+radius = 7.0
+height = 14.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 62)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_wtcfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_0e48y")
+debug_color = Color(0.93073, 2.78196e-05, 0.655608, 0.42)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="StaticBody2D"]
+position = Vector2(158, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/StaticBody2D"]
+texture = ExtResource("1_wtcfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_0e48y")
+debug_color = Color(0.93073, 2.78196e-05, 0.655608, 0.42)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(83, -90)
+rotation = -1.25664
+skew = 1.01578
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+texture = ExtResource("1_wtcfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_0e48y")
+disabled = true
+debug_color = Color(0.93073, 2.78196e-05, 0.655608, 0.42)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, -29)
+scale = Vector2(4, 4)
+script = ExtResource("2_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_wtcfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_epypp")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0.25, 29)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
